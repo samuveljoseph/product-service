@@ -84,6 +84,7 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<finalName>product-service-0.0.1</finalName>
 	</build>
 	<repositories>
 		<repository>
@@ -103,4 +104,5 @@
 			</snapshots>
 		</repository>
 	</repositories>
+	
 </project>
