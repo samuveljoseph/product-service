@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 
 
-import com.eccommerce.productservice.exception.ProductNotFoundException;
 import com.eccommerce.productservice.model.Product;
 import com.eccommerce.productservice.repository.ProductRepo;
 import com.eccommerce.productservice.service.ProductService;

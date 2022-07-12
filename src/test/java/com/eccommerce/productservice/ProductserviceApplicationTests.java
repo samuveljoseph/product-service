@@ -17,7 +17,6 @@ import org.mockito.Mock;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.eccommerce.productservice.exception.ProductNotFoundException;
 import com.eccommerce.productservice.model.Product;
 import com.eccommerce.productservice.repository.ProductRepo;
 
