@@ -25,8 +25,7 @@ public class ProductServiceImplementation implements ProductService {
 		return productRepo.findAll();
 	}
 	public Product editProduct(Product updateProduct) {
-		Optional<Product> productData = productRepo.findById(updateProduct.getId());
-		Product product = productData.get();
+		Product product =  productRepo.findById(updateProduct.getId()).get();
 		product.setProductName(updateProduct.getProductName());
 		product.setProductDescription(updateProduct.getProductDescription());
 		product.setImageUrl(updateProduct.getImageUrl());
