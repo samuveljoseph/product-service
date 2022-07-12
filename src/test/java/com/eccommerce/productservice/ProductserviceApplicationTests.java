@@ -1,6 +1,7 @@
 package com.eccommerce.productservice;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -16,7 +17,7 @@ import org.mockito.Mock;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
-
+import com.eccommerce.productservice.exception.ProductNotFoundException;
 import com.eccommerce.productservice.model.Product;
 import com.eccommerce.productservice.repository.ProductRepo;
 
@@ -84,9 +85,9 @@ class ProductserviceApplicationTests {
 		Product product=new Product("123hdgf","redmi 9 pro","ram 2gb,internal:16gb,camera:16mp",
 				"https://www.google.com/aclk?sa=L&ai=DChcSEwj1nuzttP_3AhWRMysKHVuiA6oYABAJGgJzZg&sig=AOD64_1_oBQTqQFIwgnSHdyuSCnXsdXnNg&adurl&ctype=5&ved=2ahUKEwilntrttP_3AhVsLrcAHfGgAmAQvhd6BAgBEF4",
 				15999,14999,"123smfd");
-		String id="123hdgf";
-		when(productRepo.findById(id)).thenReturn(Optional.ofNullable(product));
-		assertEquals(product,productServiceImplementation.getProductById(id));
+		
+		when(productRepo.findById("123hdgf")).thenReturn(Optional.ofNullable(product));
+		assertEquals(product,productServiceImplementation.getProductById("123hdgf"));
 	}
 	@Test
 	void test_getProductByProductCategoryId() {
@@ -107,15 +108,7 @@ class ProductserviceApplicationTests {
 		productServiceImplementation.deleteProduct(id);
 		verify(productRepo,times(1)).deleteById(id);
 	}
-	@Test
-	void test_getProductByIdFailure() {
-		Product product=new Product("123hdgf","redmi 9 pro","ram 2gb,internal:16gb,camera:16mp",
-				"https://www.google.com/aclk?sa=L&ai=DChcSEwj1nuzttP_3AhWRMysKHVuiA6oYABAJGgJzZg&sig=AOD64_1_oBQTqQFIwgnSHdyuSCnXsdXnNg&adurl&ctype=5&ved=2ahUKEwilntrttP_3AhVsLrcAHfGgAmAQvhd6BAgBEF4",
-				15999,14999,"123smfd");
-		String id="123hdgf";
-		when(productRepo.findById(id)).thenReturn(Optional.ofNullable(product));
-		assertEquals(product,productServiceImplementation.getProductById(id));
-	}
+
 
 	
 
