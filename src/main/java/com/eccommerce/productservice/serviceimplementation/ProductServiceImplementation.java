@@ -40,11 +40,10 @@ public class ProductServiceImplementation implements ProductService {
 		productRepo.deleteById(id);
 	}
 	public Product getProductById(String id){
-		Optional<Product> productData=productRepo.findById(id);
-		if(productData.isEmpty()) {
+		if(productRepo.findById(id).isEmpty()) {
 			throw new ProductNotFoundException("product id is invalid");
 		}
-		return productData.get();
+		return productRepo.findById(id).get();
 	}
 	public List<Product> getProductByProductCategoryId(String productCategoryId){
 		return productRepo.findByProductCategoryId(productCategoryId);
